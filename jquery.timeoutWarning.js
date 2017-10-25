@@ -10,8 +10,7 @@
 (function($){
 
   function reload() {
-    // https://stackoverflow.com/a/25896080
-    return window.navigate ? window.navigate.bind(window, window.location.href) : window.location.reload.bind(window.location);
+    return window.location.reload();
   }
 
   function debug(level) {
@@ -53,14 +52,14 @@
   function scheduleWarning() {
     clearTimers();
     timers.push(setTimeout(function() {
-      if (new Date().getTime() < Cookies.get(settings.cookieName) - settings.notifyBefore) {
+      if (getMillisLeftToExpire() > settings.notifyBefore) {
         // it seems that the session was pinged by another browser instance in the same session, so reschedule the warning
         scheduleWarning();
         return;
       }
       // the session will expire in `settings.notifyBefore` milliseconds
       timers.push(setTimeout(function() {
-        if (new Date().getTime() >= Cookies.get(settings.cookieName)) {
+        if (getMillisLeftToExpire() <= 0) {
           if (settings.sessionExpired)
             settings.sessionExpired();
         }
@@ -134,13 +133,17 @@
           initialized = true;
         },
         millisLeftToExpire: function() {
-          if (!initialized)
+          if (!initialized) {
             debug('error', 'The plugin has not been initialized');
+            return;
+          }
           return getMillisLeftToExpire();
         },
         ping: function() {
-          if (!initialized)
+          if (!initialized) {
             debug('error', 'The plugin has not been initialized');
+            return;
+          }
           $.ajax(settings.pingUrl);
         },
         enable: function(options) {
@@ -150,8 +153,10 @@
           methods.init.call(this, options);
         },
         disable: function() {
-          if (!initialized)
+          if (!initialized) {
             debug('error', 'The plugin has not been initialized');
+            return;
+          }
           methods.init.call(this, { enabled: false });
         }
       };
