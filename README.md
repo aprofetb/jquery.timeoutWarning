@@ -1,5 +1,5 @@
 # jquery.timeoutWarning
-jQuery Session Timeout Warning
+jQuery Session Timeout Warning is a plugin that 
 
 ## Usage
 ```js
@@ -16,7 +16,7 @@ $.timeoutWarning({
                                                     //   the warning message
   enabled                 : true,                   // schedule the session timeout warning when the `init`
                                                     //   method is executed
-  resetOnAjaxComplete     : true,                   // reset the session timeout when the ajaxComplete event
+  resetOnAjaxComplete     : true,                   // reset the session timeout when the document's ajaxComplete event
                                                     //   is fired
   alert                   : bootbox.alert,          // alert function
   warningMessage          : "For your protection, you are about to be automatically logged out.<br>" +
