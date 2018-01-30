@@ -1,5 +1,5 @@
 # jquery.timeoutWarning
-jQuery Session Timeout Warning is a plugin that 
+jQuery Session Timeout Warning is a plugin that shows a session-about-to-expire message and allows the user to remain in it by clicking a button.
 
 ## Usage
 ```js
