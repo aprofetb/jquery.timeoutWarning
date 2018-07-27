@@ -1,5 +1,5 @@
 # jquery.timeoutWarning
-jQuery Session Timeout Warning is a plugin that shows a session-about-to-expire message and allows the user to remain in it by clicking a button.
+jQuery Session Timeout Warning is a plugin that shows a session-about-to-expire message and allows the user to remain in the session by clicking a button.
 
 ## Usage
 ```js
@@ -16,8 +16,8 @@ $.timeoutWarning({
                                                     //   the warning message
   enabled                 : true,                   // schedule the session timeout warning when the `init`
                                                     //   method is executed
-  resetOnAjaxComplete     : true,                   // reset the session timeout when the document's ajaxComplete event
-                                                    //   is fired
+  resetOnAjaxComplete     : true,                   // reset the session timeout when the document's ajaxComplete
+                                                    //   event is fired
   alert                   : bootbox.alert,          // alert function
   warningMessage          : "For your protection, you are about to be automatically logged out.<br>" +
                             "If you would like to remain in the session, click OK."
